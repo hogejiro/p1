@@ -71,6 +71,13 @@ bool HelloWorld::init()
     // add the sprite as a child to this layer
     this->addChild(pSprite, 0);
     
+    
+    CCSpriteFrameCache *spriteCache = CCSpriteFrameCache::sharedSpriteFrameCache();
+    spriteCache->addSpriteFramesWithFile("darknight.plist");
+    CCSprite *sprite = CCSprite::createWithSpriteFrameName("7.png");
+    this->addChild(sprite);
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    sprite->setPosition(ccp(sprite->getContentSize().width/2, winSize.height/2));
     return true;
 }
 

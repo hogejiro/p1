@@ -4190,10 +4190,10 @@
 		DBCFE2821782D4C1005DA21A /* darknight */ = {
 			isa = PBXGroup;
 			children = (
+				DBCFE2961782D4C1005DA21A /* darknight.png */,
+				DBCFE2951782D4C1005DA21A /* darknight.plist */,
 				DBCFE2831782D4C1005DA21A /* action1 */,
 				DBCFE28B1782D4C1005DA21A /* action2 */,
-				DBCFE2951782D4C1005DA21A /* darknight.plist */,
-				DBCFE2961782D4C1005DA21A /* darknight.png */,
 				DBCFE2971782D4C1005DA21A /* darknight.tps */,
 			);
 			name = darknight;
