@@ -280,6 +280,7 @@
 		026B754517818E6200810CD3 /* libwebsockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 026B754417818E6200810CD3 /* libwebsockets.a */; };
 		026B754B17818E6200810CD3 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 026B754A17818E6200810CD3 /* AppDelegate.cpp */; };
 		026B754E17818E6200810CD3 /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 026B754D17818E6200810CD3 /* HelloWorldScene.cpp */; };
+		AA96DD0D1782D87900152981 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA96DD0B1782D87900152981 /* Controller.cpp */; };
 		BA8E542A1781C7DA00704C52 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026B6DFD178187D400810CD3 /* QuartzCore.framework */; };
 		BA8E542B1781C7DA00704C52 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026B6DFF178187D400810CD3 /* OpenGLES.framework */; };
 		BA8E542C1781C7DA00704C52 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026B6E01178187D400810CD3 /* OpenAL.framework */; };
@@ -1146,6 +1147,8 @@
 		026B754A17818E6200810CD3 /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = Classes/AppDelegate.cpp; sourceTree = "<group>"; };
 		026B754C17818E6200810CD3 /* HelloWorldScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HelloWorldScene.h; path = Classes/HelloWorldScene.h; sourceTree = "<group>"; };
 		026B754D17818E6200810CD3 /* HelloWorldScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = HelloWorldScene.cpp; path = Classes/HelloWorldScene.cpp; sourceTree = "<group>"; };
+		AA96DD0B1782D87900152981 /* Controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Controller.cpp; path = Classes/Controller.cpp; sourceTree = "<group>"; };
+		AA96DD0C1782D87900152981 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Controller.h; path = Classes/Controller.h; sourceTree = "<group>"; };
 		BA8E54291781C7DA00704C52 /* controller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = controller.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA8E54341781C7DA00704C52 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CloseNormal.png; path = Resources/CloseNormal.png; sourceTree = "<group>"; };
 		BA8E54361781C7DA00704C52 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CloseSelected.png; path = Resources/CloseSelected.png; sourceTree = "<group>"; };
@@ -4144,6 +4147,8 @@
 				BA8E57C51781C7E100704C52 /* AppDelegate.cpp */,
 				BA8E57C71781C7E100704C52 /* HelloWorldScene.h */,
 				BA8E57C81781C7E100704C52 /* HelloWorldScene.cpp */,
+				AA96DD0B1782D87900152981 /* Controller.cpp */,
+				AA96DD0C1782D87900152981 /* Controller.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -4764,6 +4769,7 @@
 				BA8E57B81781C7E100704C52 /* cpVect.c in Sources */,
 				BA8E57C61781C7E100704C52 /* AppDelegate.cpp in Sources */,
 				BA8E57C91781C7E100704C52 /* HelloWorldScene.cpp in Sources */,
+				AA96DD0D1782D87900152981 /* Controller.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4797,6 +4803,7 @@
 					"\"$(PROJECT_NAME)/libs/cocos2dx/platform/ios\"",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				New_Setting = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -4826,6 +4833,7 @@
 					"\"$(PROJECT_NAME)/libs/cocos2dx/platform/ios\"",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				New_Setting = "";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -4916,6 +4924,15 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = controller/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				HEADER_SEARCH_PATHS = (
+					"\"$(TARGET_NAME)/libs/cocos2dx/kazmath/include\"",
+					"\"$(TARGET_NAME)/libs/cocos2dx\"",
+					"\"$(TARGET_NAME)/libs/CocosDenshion/include\"",
+					"\"$(TARGET_NAME)/libs/extensions\"",
+					"\"$(TARGET_NAME)/libs/cocos2dx/include\"",
+					"\"$(TARGET_NAME)/libs/cocos2dx/platform/third_party/ios\"",
+					"\"$(TARGET_NAME)/libs/cocos2dx/platform/ios\"",
+				);
 				INFOPLIST_FILE = controller/Resources/Info.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4943,6 +4960,15 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = controller/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				HEADER_SEARCH_PATHS = (
+					"\"$(TARGET_NAME)/libs/cocos2dx/kazmath/include\"",
+					"\"$(TARGET_NAME)/libs/cocos2dx\"",
+					"\"$(TARGET_NAME)/libs/CocosDenshion/include\"",
+					"\"$(TARGET_NAME)/libs/extensions\"",
+					"\"$(TARGET_NAME)/libs/cocos2dx/include\"",
+					"\"$(TARGET_NAME)/libs/cocos2dx/platform/third_party/ios\"",
+					"\"$(TARGET_NAME)/libs/cocos2dx/platform/ios\"",
+				);
 				INFOPLIST_FILE = controller/Resources/Info.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4990,6 +5016,7 @@
 				BA8E57CB1781C7E100704C52 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
