@@ -86,10 +86,10 @@ bool HelloWorld::init()
     /// hoge_02.png
     /// hoge_03.png
     /// という画像があるとします
-    for( int i=1; i<4; i++ )
+    for( int i=1; i<9; i++ )
     {
         char filename[128] = {0};
-        sprintf(filename,"action1%04d.png",i);
+        sprintf(filename,"action2%04d.png",i);
         pAnimation->addSpriteFrameWithFileName(filename);
     }
     
