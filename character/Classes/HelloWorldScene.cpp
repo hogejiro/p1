@@ -74,10 +74,51 @@ bool HelloWorld::init()
     
     CCSpriteFrameCache *spriteCache = CCSpriteFrameCache::sharedSpriteFrameCache();
     spriteCache->addSpriteFramesWithFile("darknight.plist");
-    CCSprite *sprite = CCSprite::createWithSpriteFrameName("7.png");
-    this->addChild(sprite);
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-    sprite->setPosition(ccp(sprite->getContentSize().width/2, winSize.height/2));
+ 
+    /// アニメーションフレームの生成
+    CCAnimation* pAnimation = CCAnimation::create();
+    
+    /// アニメーションフレームに画像を追加
+    /// [例]
+    /// hoge_00.png
+    /// hoge_01.png
+    /// hoge_02.png
+    /// hoge_03.png
+    /// という画像があるとします
+    for( int i=1; i<9; i++ )
+    {
+        char filename[128] = {0};
+        sprintf(filename,"action2%04d.png",i);
+        pAnimation->addSpriteFrameWithFileName(filename);
+    }
+    
+    /// アニメーションを切り替える速度を決める
+    /// ※1.0fで一秒になります
+    pAnimation->setDelayPerUnit( 0.1f );
+    
+    /// 無限ループさせる
+    /// [例]
+    /// 1  ... 一回ループさせる
+    /// 2  ... 二回ループさせる
+    /// -1 ... 無限ループさせる
+    pAnimation->setLoops(-1);
+    
+    /// アニメーションの生成
+    CCAnimate* pAnimate = CCAnimate::create(pAnimation);
+    
+    /// スプライトの生成
+    CCSprite* pSprite2 = CCSprite::create();
+    
+    /// レイヤーにスプライトを追加
+    this->addChild(pSprite2);
+    
+    /// スプライト座標を設定する
+    pSprite2->setPosition(ccp(winSize.width/2, winSize.height/2));
+    
+    /// アニメーションを実行する
+    pSprite2->runAction(pAnimate);
+    
     return true;
 }
 
