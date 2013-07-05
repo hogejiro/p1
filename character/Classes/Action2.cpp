@@ -1,16 +1,16 @@
-#include "HelloWorldScene.h"
+#include "Action2.h"
 #include "SimpleAudioEngine.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
 
-CCScene* HelloWorld::scene()
+CCScene* Action2::scene()
 {
     // 'scene' is an autorelease object
     CCScene *scene = CCScene::create();
     
     // 'layer' is an autorelease object
-    HelloWorld *layer = HelloWorld::create();
+    Action2 *layer = Action2::create();
 
     // add layer as a child to scene
     scene->addChild(layer);
@@ -20,7 +20,7 @@ CCScene* HelloWorld::scene()
 }
 
 // on "init" you need to initialize your instance
-bool HelloWorld::init()
+bool Action2::init()
 {
     //////////////////////////////
     // 1. super init first
@@ -38,7 +38,7 @@ bool HelloWorld::init()
                                         "CloseNormal.png",
                                         "CloseSelected.png",
                                         this,
-                                        menu_selector(HelloWorld::menuCloseCallback) );
+                                        menu_selector(Action2::menuCloseCallback) );
     pCloseItem->setPosition( ccp(CCDirector::sharedDirector()->getWinSize().width - 20, 20) );
 
     // create menu, it's an autorelease object
@@ -122,7 +122,7 @@ bool HelloWorld::init()
     return true;
 }
 
-void HelloWorld::menuCloseCallback(CCObject* pSender)
+void Action2::menuCloseCallback(CCObject* pSender)
 {
     CCDirector::sharedDirector()->end();
 
