@@ -14,6 +14,8 @@
 class Controller : public cocos2d::CCLayer {
 private:
     cocos2d::CCSprite *mSprite;
+    cocos2d::CCLabelTTF *pointLabel;
+    cocos2d::CCPoint startPoint;
 public:
     virtual bool init();
     static cocos2d::CCScene *scene();
@@ -26,6 +28,8 @@ public:
     void ccTouchMoved(cocos2d::CCTouch *ptouch, cocos2d::CCEvent *pEvent);
     void ccTouchEnded(cocos2d::CCTouch *ptouch, cocos2d::CCEvent *pEvent);
     void ccTouchCancelled(cocos2d::CCTouch *ptouch, cocos2d::CCEvent *pEvent);
+    
+    void displayTouchPoint(float point_x, float point_y);
 };
 
 #endif /* defined(__proto1__Controller__) */

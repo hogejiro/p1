@@ -48,25 +48,42 @@ void Controller::onExit() {
 bool Controller::ccTouchBegan(cocos2d::CCTouch *ptouch, cocos2d::CCEvent *pEvent) {
     //タッチ開始
     this->mSprite->initWithFile("Icon-72.png");
-    CCPoint point = ptouch->getLocationInView();
-    char str[100];
-    sprintf(str, "%f", point.x);
-    CCLabelTTF* pLabel = CCLabelTTF::create(str, "Thonburi", 34);
-    CCSize size = CCDirector::sharedDirector()->getWinSize();
-    pLabel->setPosition( ccp(size.width / 2, size.height - 20) );
     
-    this->addChild(pLabel, 1);
+    CCPoint point = ptouch->getLocationInView();
+    this->displayTouchPoint(0, 0);
+    
+    this->startPoint = point;
     return true;
 }
 
 void Controller::ccTouchMoved(cocos2d::CCTouch *ptouch, cocos2d::CCEvent *pEvent) {
     //タッチ中
+    CCPoint point = ptouch->getLocationInView();
+    
+    this->displayTouchPoint(point.x - this->startPoint.x, point.y - this->startPoint.y);
+    
 }
 
 void Controller::ccTouchEnded(cocos2d::CCTouch *ptouch, cocos2d::CCEvent *pEvent) {
     //タッチ終了
+    removeChild(this->pointLabel);
 }
 
 void Controller::ccTouchCancelled(cocos2d::CCTouch *ptouch, cocos2d::CCEvent *pEvent) {
+    puts("touch cancesl");
     //タッチキャンセル
 }
+
+void Controller::displayTouchPoint(float point_x, float point_y) {
+    // 座標を取得して文字列に格納
+    char str[100];
+    sprintf(str, "(%3.0f, %3.0f)", point_x, point_y);
+    
+    removeChild(this->pointLabel);
+    this->pointLabel = CCLabelTTF::create(str, "Thonburi", 34);
+    CCSize size = CCDirector::sharedDirector()->getWinSize();
+    this->pointLabel->setPosition( ccp(size.width / 2, size.height - 20) );
+    
+    this->addChild(this->pointLabel, 1);
+}
+
