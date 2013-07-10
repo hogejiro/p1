@@ -279,8 +279,7 @@
 		026B753D17818E6200810CD3 /* cpVect.c in Sources */ = {isa = PBXBuildFile; fileRef = 026B753C17818E6200810CD3 /* cpVect.c */; };
 		026B754517818E6200810CD3 /* libwebsockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 026B754417818E6200810CD3 /* libwebsockets.a */; };
 		026B754B17818E6200810CD3 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 026B754A17818E6200810CD3 /* AppDelegate.cpp */; };
-		026B754E17818E6200810CD3 /* Action2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 026B754D17818E6200810CD3 /* Action2.cpp */; };
-		026B79161782EDB700810CD3 /* Action1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 026B79141782EDB700810CD3 /* Action1.cpp */; };
+		026B79161782EDB700810CD3 /* BattleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 026B79141782EDB700810CD3 /* BattleScene.cpp */; };
 		AA96DD0D1782D87900152981 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA96DD0B1782D87900152981 /* Controller.cpp */; };
 		BA8E542A1781C7DA00704C52 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026B6DFD178187D400810CD3 /* QuartzCore.framework */; };
 		BA8E542B1781C7DA00704C52 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026B6DFF178187D400810CD3 /* OpenGLES.framework */; };
@@ -1181,10 +1180,8 @@
 		026B754717818E6200810CD3 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		026B754917818E6200810CD3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		026B754A17818E6200810CD3 /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = Classes/AppDelegate.cpp; sourceTree = "<group>"; };
-		026B754C17818E6200810CD3 /* Action2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Action2.h; path = Classes/Action2.h; sourceTree = "<group>"; };
-		026B754D17818E6200810CD3 /* Action2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Action2.cpp; path = Classes/Action2.cpp; sourceTree = "<group>"; };
-		026B79141782EDB700810CD3 /* Action1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Action1.cpp; path = Classes/Action1.cpp; sourceTree = "<group>"; };
-		026B79151782EDB700810CD3 /* Action1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Action1.h; path = Classes/Action1.h; sourceTree = "<group>"; };
+		026B79141782EDB700810CD3 /* BattleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BattleScene.cpp; path = Classes/BattleScene.cpp; sourceTree = "<group>"; };
+		026B79151782EDB700810CD3 /* BattleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BattleScene.h; path = Classes/BattleScene.h; sourceTree = "<group>"; };
 		AA96DD0B1782D87900152981 /* Controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Controller.cpp; path = Classes/Controller.cpp; sourceTree = "<group>"; };
 		AA96DD0C1782D87900152981 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Controller.h; path = Classes/Controller.h; sourceTree = "<group>"; };
 		BA8E54291781C7DA00704C52 /* controller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = controller.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3046,11 +3043,9 @@
 			isa = PBXGroup;
 			children = (
 				026B754917818E6200810CD3 /* AppDelegate.h */,
-				026B79141782EDB700810CD3 /* Action1.cpp */,
-				026B79151782EDB700810CD3 /* Action1.h */,
+				026B79141782EDB700810CD3 /* BattleScene.cpp */,
+				026B79151782EDB700810CD3 /* BattleScene.h */,
 				026B754A17818E6200810CD3 /* AppDelegate.cpp */,
-				026B754C17818E6200810CD3 /* Action2.h */,
-				026B754D17818E6200810CD3 /* Action2.cpp */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -4682,8 +4677,7 @@
 				026B753B17818E6200810CD3 /* cpSweep1D.c in Sources */,
 				026B753D17818E6200810CD3 /* cpVect.c in Sources */,
 				026B754B17818E6200810CD3 /* AppDelegate.cpp in Sources */,
-				026B754E17818E6200810CD3 /* Action2.cpp in Sources */,
-				026B79161782EDB700810CD3 /* Action1.cpp in Sources */,
+				026B79161782EDB700810CD3 /* BattleScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
