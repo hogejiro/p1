@@ -19,6 +19,7 @@ private:
 public:
     // Method 'init' in cocos2d-x returns bool, instead of 'id' in cocos2d-iphone (an object pointer)
     virtual bool init();
+    virtual void runDashAnimation(cocos2d::CCPoint);
     virtual void runSwordAttackAnimation(cocos2d::CCPoint);
     virtual void runJumpAttackAnimation(cocos2d::CCPoint);
     
