@@ -23,11 +23,14 @@ public:
     
     void onEnter();
     void onExit();
-    
     bool ccTouchBegan(cocos2d::CCTouch *ptouch, cocos2d::CCEvent *pEvent);
     void ccTouchMoved(cocos2d::CCTouch *ptouch, cocos2d::CCEvent *pEvent);
     void ccTouchEnded(cocos2d::CCTouch *ptouch, cocos2d::CCEvent *pEvent);
     void ccTouchCancelled(cocos2d::CCTouch *ptouch, cocos2d::CCEvent *pEvent);
+    void ccTouchesBegan(cocos2d::CCSet *ptouches, cocos2d::CCEvent *pEvent);
+    void ccTouchesMoved(cocos2d::CCSet *ptouches, cocos2d::CCEvent *pEvent);
+    void ccTouchesEnded(cocos2d::CCSet *ptouches, cocos2d::CCEvent *pEvent);
+    void ccTouchesCancelled(cocos2d::CCSet *ptouches, cocos2d::CCEvent *pEvent);
     
     void displayTouchPoint(float point_x, float point_y);
 };
