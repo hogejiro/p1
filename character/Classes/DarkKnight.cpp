@@ -58,12 +58,16 @@ void DarkKnight::runDashAnimation(CCPoint where)
     CCFiniteTimeAction* back = CCMoveBy::create(1.0, ccp(-100, 0));
     CCFiniteTimeAction* turnLeft = CCFlipX::create(true);
     CCFiniteTimeAction* turnRight = CCFlipX::create(false);
+    CCFiniteTimeAction* jumpRight = CCJumpBy::create(0.5, ccp(60, 0), 30, 1);
+    CCFiniteTimeAction* jumpLeft = CCJumpBy::create(0.5, ccp(-60, 0), 30, 1);
     
     CCArray *actions = CCArray::create();
+    actions->addObject(turnRight);
+    actions->addObject(jumpRight);
     actions->addObject(forward);
     actions->addObject(turnLeft);
+    actions->addObject(jumpLeft);
     actions->addObject(back);
-    actions->addObject(turnRight);
     
     sprite->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
     sprite->runAction(CCRepeatForever::create(CCSequence::create(actions)));
