@@ -22,6 +22,7 @@ public:
     virtual void runDashAnimation(cocos2d::CCPoint);
     virtual void runSwordAttackAnimation(cocos2d::CCPoint);
     virtual void runJumpAttackAnimation(cocos2d::CCPoint);
+    virtual void runGuardAnimation(cocos2d::CCPoint);
     
     // there's no 'id' in cpp, so we recommend to return the class instance pointer
     static cocos2d::CCScene* scene();

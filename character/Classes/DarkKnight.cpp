@@ -34,7 +34,7 @@ bool DarkKnight::init() {
     runSwordAttackAnimation(ccp(spriteWidth * 1.5, winSize.height/2));
     runJumpAttackAnimation(ccp(spriteWidth * 2.5, winSize.height/2));
     runDashAnimation(ccp(spriteWidth * 3.5, winSize.height/2));
-    
+    runGuardAnimation(ccp(spriteWidth * 1.5, winSize.height/2 + spriteHeight));
     return true;
 }
 
@@ -92,6 +92,24 @@ void DarkKnight::runJumpAttackAnimation(CCPoint where) {
     char str[100] = {0};
     for (int i = 1; i <= 9; i++) {
         sprintf(str, "2%d.png", i);
+        CCSpriteFrame* frame = spriteCache->spriteFrameByName(str);
+        animFrames->addObject(frame);
+    }
+    
+    CCSprite* sprite = CCSprite::createWithSpriteFrameName(str);
+    sprite->setPosition(where);
+    this->addChild(sprite);
+    
+    CCAnimation* animation = CCAnimation::createWithSpriteFrames(animFrames, 0.1f);
+    sprite->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
+}
+
+void DarkKnight::runGuardAnimation(CCPoint where)
+{
+    CCArray* animFrames = CCArray::createWithCapacity(7);
+    char str[100] = {0};
+    for (int i = 1; i <= 3; i++) {
+        sprintf(str, "basic90%d.png", i);
         CCSpriteFrame* frame = spriteCache->spriteFrameByName(str);
         animFrames->addObject(frame);
     }
