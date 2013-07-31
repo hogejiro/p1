@@ -53,7 +53,20 @@ void DarkKnight::runDashAnimation(CCPoint where)
     this->addChild(sprite);
     
     CCAnimation* animation = CCAnimation::createWithSpriteFrames(animFrames, 0.1f);
+    
+    CCFiniteTimeAction* forward = CCMoveBy::create(1.0, ccp(100, 0));
+    CCFiniteTimeAction* back = CCMoveBy::create(1.0, ccp(-100, 0));
+    CCFiniteTimeAction* turnLeft = CCFlipX::create(true);
+    CCFiniteTimeAction* turnRight = CCFlipX::create(false);
+    
+    CCArray *actions = CCArray::create();
+    actions->addObject(forward);
+    actions->addObject(turnLeft);
+    actions->addObject(back);
+    actions->addObject(turnRight);
+    
     sprite->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
+    sprite->runAction(CCRepeatForever::create(CCSequence::create(actions)));
 }
 
 void DarkKnight::runSwordAttackAnimation(CCPoint where)
