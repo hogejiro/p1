@@ -82,10 +82,12 @@ void Controller::ccTouchesBegan(cocos2d::CCSet *touches, cocos2d::CCEvent *pEven
         touch = (CCTouch*)(*it);
         if (!touch)
             break;
-        this->mSprite->initWithFile("Icon-72.png");
         this->displayTouchPoint(0, 0);
         CCPoint point = touch->getLocationInView();
         this->startPoint = point;
+        CCSprite* pSprite = CCSprite::create("Icon-72.png");
+        pSprite->setPosition( ccp(point.x, point.y));
+        this->addChild(pSprite, 1, 2);
     }
 }
 
@@ -103,6 +105,7 @@ void Controller::ccTouchesMoved(cocos2d::CCSet *touches, cocos2d::CCEvent *pEven
 
 void Controller::ccTouchesEnded(cocos2d::CCSet *ptouches, cocos2d::CCEvent *pEvent) {
     removeChild(this->pointLabel);
+    removeChildByTag(2);
 }
 
 void Controller::ccTouchesCancelled(cocos2d::CCSet *ptouches, cocos2d::CCEvent *pEvent) {
