@@ -24,9 +24,7 @@ bool Controller::init() {
     if (!CCLayer::init()) {
         return false;
     }
-    //this->isTouchEnabled();
-    //this->setTouchMode(kCCTouchesAllAtOnce);
-    this->setTouchEnabled(true);
+    this->setTouchMode(kCCTouchesAllAtOnce);
     CCSprite* pSprite = CCSprite::create("HelloWorld.png");
     this->mSprite = pSprite;
     
@@ -39,7 +37,7 @@ bool Controller::init() {
 
 void Controller::onEnter() {
     //デリゲートの設定
-    CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
+    CCDirector::sharedDirector()->getTouchDispatcher()->addStandardDelegate(this, 0);
 }
 
 void Controller::onExit() {
@@ -47,7 +45,7 @@ void Controller::onExit() {
     CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
 }
 
-///*
+/*
 bool Controller::ccTouchBegan(cocos2d::CCTouch *ptouch, cocos2d::CCEvent *pEvent) {
     //タッチ開始
     this->mSprite->initWithFile("Icon-72.png");
@@ -75,68 +73,40 @@ void Controller::ccTouchCancelled(cocos2d::CCTouch *ptouch, cocos2d::CCEvent *pE
         puts("touch cancel");
         //タッチキャンセル
     }
-// */
-// /*
-void Controller::ccTouchesBegan(cocos2d::CCSet *ptouches, cocos2d::CCEvent *pEvent) {
-    //タッチ開始
-    this->mSprite->initWithFile("Icon-72.png");
-    if (ptouches->count() >= 1) {
-        CCLog("hoge");
-    }
-    //CCPoint point = ptouches->getLocationInView();
-    //this->displayTouchPoint(0, 0);
-    
-    //this->startPoint = point;
-}
-
-void Controller::ccTouchesMoved(cocos2d::CCSet *ptouches, cocos2d::CCEvent *pEvent) {
-    //タッチ中
-    // CCPoint point = ptouches->getLocationInView();
-    
-    // this->displayTouchPoint(point.x - this->startPoint.x, point.y - this->startPoint.y);
-    
-}
-
-void Controller::ccTouchesEnded(cocos2d::CCSet *ptouches, cocos2d::CCEvent *pEvent) {
-    //タッチ終了
-    // removeChild(this->pointLabel);
-}
-
-void Controller::ccTouchesCancelled(cocos2d::CCSet *ptouches, cocos2d::CCEvent *pEvent) {
-    //タッチキャンセル
-}
-//  */
-/*
-void Controller::ccTouchesBegan(cocos2d::CCSet *ptouches, cocos2d::CCEvent *pEvent) {
-    //タッチ開始
-    this->mSprite->initWithFile("Icon-72.png");
-    if (ptouches->count() >= 1) {
-        CCLog("hoge");
-    }
-    //CCPoint point = ptouches->getLocationInView();
-    //this->displayTouchPoint(0, 0);
-    
-    //this->startPoint = point;
-}
-
-void Controller::ccTouchesMoved(cocos2d::CCSet *ptouches, cocos2d::CCEvent *pEvent) {
-    //タッチ中
-    // CCPoint point = ptouches->getLocationInView();
-    
-    // this->displayTouchPoint(point.x - this->startPoint.x, point.y - this->startPoint.y);
-    
-}
-
-void Controller::ccTouchesEnded(cocos2d::CCSet *ptouches, cocos2d::CCEvent *pEvent) {
-    //タッチ終了
-    // removeChild(this->pointLabel);
-}
-
-void Controller::ccTouchesCancelled(cocos2d::CCSet *ptouches, cocos2d::CCEvent *pEvent) {
-    //タッチキャンセル
-}
- 
 */
+// /*
+void Controller::ccTouchesBegan(cocos2d::CCSet *touches, cocos2d::CCEvent *pEvent) {
+    CCTouch* touch;
+    for (CCSetIterator it = touches->begin(); it != touches->end(); it++)
+    {
+        touch = (CCTouch*)(*it);
+        if (!touch)
+            break;
+        this->mSprite->initWithFile("Icon-72.png");
+        this->displayTouchPoint(0, 0);
+        CCPoint point = touch->getLocationInView();
+        this->startPoint = point;
+    }
+}
+
+void Controller::ccTouchesMoved(cocos2d::CCSet *touches, cocos2d::CCEvent *pEvent) {
+    CCTouch* touch;
+    for (CCSetIterator it = touches->begin(); it != touches->end(); it++)
+    {
+        touch = (CCTouch*)(*it);
+        if (!touch)
+            break;
+        CCPoint point = touch->getLocationInView();
+        this->displayTouchPoint(point.x - this->startPoint.x, point.y - this->startPoint.y);
+    }
+}
+
+void Controller::ccTouchesEnded(cocos2d::CCSet *ptouches, cocos2d::CCEvent *pEvent) {
+    removeChild(this->pointLabel);
+}
+
+void Controller::ccTouchesCancelled(cocos2d::CCSet *ptouches, cocos2d::CCEvent *pEvent) {
+}
 
 void Controller::displayTouchPoint(float point_x, float point_y) {
     // 座標を取得して文字列に格納
