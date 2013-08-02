@@ -25,12 +25,14 @@ bool Controller::init() {
         return false;
     }
     this->setTouchMode(kCCTouchesAllAtOnce);
+    /*
     CCSprite* pSprite = CCSprite::create("HelloWorld.png");
     this->mSprite = pSprite;
     
     CCSize size = CCDirector::sharedDirector()->getWinSize();
     pSprite->setPosition( ccp(size.width/2, size.height/2) );
     this->addChild(pSprite, 0);
+     */
     
     return true;
 }
@@ -86,8 +88,12 @@ void Controller::ccTouchesBegan(cocos2d::CCSet *touches, cocos2d::CCEvent *pEven
         this->displayTouchPoint(0, 0);
         CCPoint point = touch->getLocation();
         this->startPoint = point;
-        CCSprite* pSprite = CCSprite::create("Icon-72.png");
+        CCSprite* pSprite = CCSprite::create("Controller.png");
+        CCSize winsize = CCDirector::sharedDirector()->getWinSize();
         pSprite->setPosition( ccp(point.x, point.y));
+        pSprite->setScale(0.25);
+        pSprite->setOpacity(100);
+        this->ccTouchesMoved(touches, pEvent);
         this->addChild(pSprite, 1, 2 + idx);
     }
 }
@@ -102,10 +108,18 @@ void Controller::ccTouchesMoved(cocos2d::CCSet *touches, cocos2d::CCEvent *pEven
         if (!touch)
             break;
         CCPoint point = touch->getLocation();
-        CCSprite* pSprite = CCSprite::create("Icon-Small.png");
-        pSprite->setPosition( ccp(point.x, point.y));
+        CCSprite* pSprite = CCSprite::create("Controller.png");
+        float dx = point.x - this->startPoint.x;
+        float dy = point.y - this->startPoint.y;
+        float drad = sqrt(dx * dx + dy * dy);
+        int mag = 64;
+        this->displayTouchPoint(dx, dy);
+        dx = abs(mag * dx / drad) < abs(dx) ? mag * dx / drad : dx;
+        dy = abs(mag * dy / drad) < abs(dy) ? mag * dy / drad : dy;
+        pSprite->setPosition( ccp(startPoint.x + dx, startPoint.y + dy));
+        pSprite->setScale(0.5);
+        pSprite->setOpacity(100);
         this->addChild(pSprite, 1, 4 + idx);
-        this->displayTouchPoint(point.x - this->startPoint.x, point.y - this->startPoint.y);
     }
 }
 
