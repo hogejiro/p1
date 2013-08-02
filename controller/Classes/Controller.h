@@ -16,6 +16,7 @@ private:
     cocos2d::CCSprite *mSprite;
     cocos2d::CCLabelTTF *pointLabel;
     cocos2d::CCPoint startPoint;
+    cocos2d::CCParticleSystemQuad* particle;
 public:
     virtual bool init();
     static cocos2d::CCScene *scene();

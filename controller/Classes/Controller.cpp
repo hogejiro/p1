@@ -77,35 +77,45 @@ void Controller::ccTouchCancelled(cocos2d::CCTouch *ptouch, cocos2d::CCEvent *pE
 // /*
 void Controller::ccTouchesBegan(cocos2d::CCSet *touches, cocos2d::CCEvent *pEvent) {
     CCTouch* touch;
-    for (CCSetIterator it = touches->begin(); it != touches->end(); it++)
+    int idx = 0;
+    for (CCSetIterator it = touches->begin(); it != touches->end(); it++, idx++)
     {
         touch = (CCTouch*)(*it);
         if (!touch)
             break;
         this->displayTouchPoint(0, 0);
-        CCPoint point = touch->getLocationInView();
+        CCPoint point = touch->getLocation();
         this->startPoint = point;
         CCSprite* pSprite = CCSprite::create("Icon-72.png");
         pSprite->setPosition( ccp(point.x, point.y));
-        this->addChild(pSprite, 1, 2);
+        this->addChild(pSprite, 1, 2 + idx);
     }
 }
 
 void Controller::ccTouchesMoved(cocos2d::CCSet *touches, cocos2d::CCEvent *pEvent) {
     CCTouch* touch;
-    for (CCSetIterator it = touches->begin(); it != touches->end(); it++)
+    int idx = 0;
+    for (CCSetIterator it = touches->begin(); it != touches->end(); it++, idx++)
     {
+        removeChildByTag(4 + idx);
         touch = (CCTouch*)(*it);
         if (!touch)
             break;
-        CCPoint point = touch->getLocationInView();
+        CCPoint point = touch->getLocation();
+        CCSprite* pSprite = CCSprite::create("Icon-Small.png");
+        pSprite->setPosition( ccp(point.x, point.y));
+        this->addChild(pSprite, 1, 4 + idx);
         this->displayTouchPoint(point.x - this->startPoint.x, point.y - this->startPoint.y);
     }
 }
 
-void Controller::ccTouchesEnded(cocos2d::CCSet *ptouches, cocos2d::CCEvent *pEvent) {
+void Controller::ccTouchesEnded(cocos2d::CCSet *touches, cocos2d::CCEvent *pEvent) {
     removeChild(this->pointLabel);
-    removeChildByTag(2);
+    int idx = 0;
+    for (CCSetIterator it = touches->begin(); it != touches->end(); it++, idx++) {
+        removeChildByTag(2 + idx);
+        removeChildByTag(4 + idx);
+    }
 }
 
 void Controller::ccTouchesCancelled(cocos2d::CCSet *ptouches, cocos2d::CCEvent *pEvent) {
