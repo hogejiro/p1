@@ -281,6 +281,8 @@
 		026B754B17818E6200810CD3 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 026B754A17818E6200810CD3 /* AppDelegate.cpp */; };
 		026B754E17818E6200810CD3 /* Action2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 026B754D17818E6200810CD3 /* Action2.cpp */; };
 		026B79161782EDB700810CD3 /* Action1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 026B79141782EDB700810CD3 /* Action1.cpp */; };
+		0659B26117C36D1100BF1DB0 /* Touch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0659B25F17C36D1100BF1DB0 /* Touch.cpp */; };
+		0659B26517C3728D00BF1DB0 /* LeftTouch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0659B26317C3728D00BF1DB0 /* LeftTouch.cpp */; };
 		AA67BC6617ABBCAB00386676 /* Controller.png in Resources */ = {isa = PBXBuildFile; fileRef = AA67BC6517ABBCAB00386676 /* Controller.png */; };
 		AA96DD0D1782D87900152981 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA96DD0B1782D87900152981 /* Controller.cpp */; };
 		BA8E542A1781C7DA00704C52 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026B6DFD178187D400810CD3 /* QuartzCore.framework */; };
@@ -1185,6 +1187,10 @@
 		026B754D17818E6200810CD3 /* Action2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Action2.cpp; path = Classes/Action2.cpp; sourceTree = "<group>"; };
 		026B79141782EDB700810CD3 /* Action1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Action1.cpp; path = Classes/Action1.cpp; sourceTree = "<group>"; };
 		026B79151782EDB700810CD3 /* Action1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Action1.h; path = Classes/Action1.h; sourceTree = "<group>"; };
+		0659B25F17C36D1100BF1DB0 /* Touch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Touch.cpp; sourceTree = "<group>"; };
+		0659B26017C36D1100BF1DB0 /* Touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Touch.h; sourceTree = "<group>"; };
+		0659B26317C3728D00BF1DB0 /* LeftTouch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LeftTouch.cpp; sourceTree = "<group>"; };
+		0659B26417C3728D00BF1DB0 /* LeftTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftTouch.h; sourceTree = "<group>"; };
 		AA67BC6517ABBCAB00386676 /* Controller.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Controller.png; path = Resources/Controller.png; sourceTree = "<group>"; };
 		AA96DD0B1782D87900152981 /* Controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Controller.cpp; path = Classes/Controller.cpp; sourceTree = "<group>"; };
 		AA96DD0C1782D87900152981 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Controller.h; path = Classes/Controller.h; sourceTree = "<group>"; };
@@ -3054,6 +3060,15 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
+		0659B26217C36D8000BF1DB0 /* Touch */ = {
+			isa = PBXGroup;
+			children = (
+				0659B26317C3728D00BF1DB0 /* LeftTouch.cpp */,
+				0659B26417C3728D00BF1DB0 /* LeftTouch.h */,
+			);
+			name = Touch;
+			sourceTree = "<group>";
+		};
 		BA8E54321781C7DA00704C52 /* controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -4219,10 +4234,13 @@
 		BA8E57C31781C7E100704C52 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0659B26217C36D8000BF1DB0 /* Touch */,
 				BA8E57C41781C7E100704C52 /* AppDelegate.h */,
 				BA8E57C51781C7E100704C52 /* AppDelegate.cpp */,
 				AA96DD0B1782D87900152981 /* Controller.cpp */,
 				AA96DD0C1782D87900152981 /* Controller.h */,
+				0659B25F17C36D1100BF1DB0 /* Touch.cpp */,
+				0659B26017C36D1100BF1DB0 /* Touch.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -4939,6 +4957,8 @@
 				BA8E57B81781C7E100704C52 /* cpVect.c in Sources */,
 				BA8E57C61781C7E100704C52 /* AppDelegate.cpp in Sources */,
 				AA96DD0D1782D87900152981 /* Controller.cpp in Sources */,
+				0659B26117C36D1100BF1DB0 /* Touch.cpp in Sources */,
+				0659B26517C3728D00BF1DB0 /* LeftTouch.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
