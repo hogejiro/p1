@@ -15,11 +15,13 @@
 
 template<class TSelf>
 class Touch {
-private:
-    static TSelf* instance;
-    Touch() {
-        
+protected:
+    static Touch* instance;
+    Touch(Controller* controller) {
+        this->controller = controller;
     }
+//    Touch(const Touch&);
+//    const Touch& operator = (const Touch&);
 public:
     const int ON = 1;
     const int OFF = 0;
@@ -29,8 +31,11 @@ public:
     cocos2d::CCPoint startPoint;
     Controller* controller;
 
-    ~Touch() {
-        
+    static TSelf* getInstance(Controller* controller) {
+        if (instance == 0) {
+            instance = new TSelf(controller);
+        }
+        return instance;
     }
 
     virtual void touchBegan(cocos2d::CCTouch *touch, cocos2d::CCEvent *pEvent);
@@ -38,8 +43,13 @@ public:
     virtual void touchEnded(cocos2d::CCTouch *touch, cocos2d::CCEvent *pEvent);
     virtual void touchCanceled(cocos2d::CCTouch *touch, cocos2d::CCEvent *pEvent);
     
-    static TSelf getInstance();
-    void displayTouchPoint(float point_x, float point_y);
+    void displayTouchPoint(float point_x, float point_y) {
+        
+    }
 };
+
+template<class TSelf>
+Touch<TSelf>* Touch<TSelf>::instance = 0;
+
 
 #endif /* defined(__proto1__Touch__) */

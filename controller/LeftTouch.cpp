@@ -20,7 +20,8 @@ void LeftTouch::touchMoved(cocos2d::CCTouch *touch, cocos2d::CCEvent *pEvent) {
     }
     
     cocos2d::CCPoint point = touch->getLocation();
-    this->pSprite = cocos2d::CCSprite::create("Controller.png");
+    cocos2d::CCSprite* pSprite = cocos2d::CCSprite::create("Controller.png");
+    pSprite = cocos2d::CCSprite::create("Controller.png");
     cocos2d::CCPoint startPoint = this->startPoint;
     float dx = point.x - this->startPoint.x;
     float dy = point.y - this->startPoint.y;
@@ -32,7 +33,7 @@ void LeftTouch::touchMoved(cocos2d::CCTouch *touch, cocos2d::CCEvent *pEvent) {
     pSprite->setPosition( ccp(this->startPoint.x + dx, this->startPoint.y + dy));
     pSprite->setScale(0.5);
     pSprite->setOpacity(100);
-    this->addChild(pSprite, 1, 4 + this->id);
+    this->controller->addChild(pSprite, 1, 4 + this->id);
 }
 
 void LeftTouch::touchEnded(cocos2d::CCTouch *touch, cocos2d::CCEvent *pEvent) {

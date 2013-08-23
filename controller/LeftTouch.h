@@ -12,7 +12,7 @@
 #include "Touch.h"
 #include <iostream>
 
-class LeftTouch : public Touch {
+class LeftTouch : public Touch<LeftTouch> {
 private:
 public:
     unsigned int id;

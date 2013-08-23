@@ -8,11 +8,8 @@
 
 #include "Touch.h"
 
-static Touch getInstance() {
+/*template<class TSelf>
+void Touch<TSelf>::displayTouchPoint(float point_x, float point_y) {
     
 }
-
-void displayTouchPoint(float point_x, float point_y) {
-    
-}
-
+*/
