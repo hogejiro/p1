@@ -11,35 +11,38 @@
 
 using namespace cocos2d;
 
-CCScene* DarkKnight::scene()
-{
-    CCScene *scene = CCScene::create();
-    DarkKnight *layer = DarkKnight::create();
-    scene->addChild(layer);
-    return scene;
-}
-
 bool DarkKnight::init() {
-    if ( !CCLayer::init() )
+    if ( !CCNode::init() )
     {
         return false;
     }
 
     spriteCache = CCSpriteFrameCache::sharedSpriteFrameCache();
     spriteCache->addSpriteFramesWithFile("darknight.plist");
+    this->sprite = CCSprite::createWithSpriteFrameName("1.png");
+    this->addChild(sprite);
     
+    /*
     int spriteWidth = 48;
     int spriteHeight = 48;
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    sprite->setPosition(ccp(spriteWidth * 1.5, winSize.height/2));
+    
     runSwordAttackAnimation(ccp(spriteWidth * 1.5, winSize.height/2));
     runJumpAttackAnimation(ccp(spriteWidth * 2.5, winSize.height/2));
     runDashAnimation(ccp(spriteWidth * 3.5, winSize.height/2));
     runGuardAnimation(ccp(spriteWidth * 1.5, winSize.height/2 + spriteHeight));
+     */
     return true;
 }
 
-void DarkKnight::runDashAnimation(CCPoint where)
-{
+void DarkKnight::setPosition(const cocos2d::CCPoint &position) {
+    this->sprite->setPosition(position);
+}
+
+void DarkKnight::move(CCAction* act) {
+    this->sprite->stopAllActions();
+    
     CCArray* animFrames = CCArray::createWithCapacity(5);
     char str[100] = {0};
     for (int i = 1; i <= 5; i++) {
@@ -48,33 +51,41 @@ void DarkKnight::runDashAnimation(CCPoint where)
         animFrames->addObject(frame);
     }
     
-    CCSprite* sprite = CCSprite::createWithSpriteFrameName(str);
-    sprite->setPosition(where);
-    this->addChild(sprite);
-    
     CCAnimation* animation = CCAnimation::createWithSpriteFrames(animFrames, 0.1f);
     
-    CCFiniteTimeAction* forward = CCMoveBy::create(1.0, ccp(100, 0));
-    CCFiniteTimeAction* back = CCMoveBy::create(1.0, ccp(-100, 0));
-    CCFiniteTimeAction* turnLeft = CCFlipX::create(true);
-    CCFiniteTimeAction* turnRight = CCFlipX::create(false);
-    CCFiniteTimeAction* jumpRight = CCJumpBy::create(0.5, ccp(60, 0), 30, 1);
-    CCFiniteTimeAction* jumpLeft = CCJumpBy::create(0.5, ccp(-60, 0), 30, 1);
-    
     CCArray *actions = CCArray::create();
-    actions->addObject(turnRight);
-    actions->addObject(jumpRight);
-    actions->addObject(forward);
-    actions->addObject(turnLeft);
-    actions->addObject(jumpLeft);
-    actions->addObject(back);
+    actions->addObject(act);
     
-    sprite->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
-    sprite->runAction(CCRepeatForever::create(CCSequence::create(actions)));
+    this->sprite->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
+    this->sprite->runAction(CCSequence::create(actions));
+    
 }
 
-void DarkKnight::runSwordAttackAnimation(CCPoint where)
+void DarkKnight::run(CCPoint t)
 {
+    CCFiniteTimeAction* forward = CCMoveBy::create(1.0, t);
+    this->move(forward);
+}
+
+void DarkKnight::jump(CCPoint t) {
+    CCFiniteTimeAction* jump = CCJumpBy::create(0.5, t, 30, 1);
+    this->move(jump);
+}
+
+void DarkKnight::turnLeft() {
+    CCFiniteTimeAction* turnLeft = CCFlipX::create(true);
+    this->move(turnLeft);
+}
+
+void DarkKnight::turnRight() {
+    CCFiniteTimeAction* turnRight = CCFlipX::create(false);
+    this->move(turnRight);
+}
+
+void DarkKnight::swordAttack(CCPoint where)
+{
+    this->sprite->stopAllActions();
+    
     CCArray* animFrames = CCArray::createWithCapacity(7);
     char str[100] = {0};
     for (int i = 1; i <= 7; i++) {
@@ -83,15 +94,13 @@ void DarkKnight::runSwordAttackAnimation(CCPoint where)
         animFrames->addObject(frame);
     }
     
-    CCSprite* sprite = CCSprite::createWithSpriteFrameName(str);
-    sprite->setPosition(where);
-    this->addChild(sprite);
-    
     CCAnimation* animation = CCAnimation::createWithSpriteFrames(animFrames, 0.1f);
     sprite->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
 }
 
-void DarkKnight::runJumpAttackAnimation(CCPoint where) {
+void DarkKnight::jumpSwordAttack(CCPoint where) {
+    this->sprite->stopAllActions();
+    
     CCArray* animFrames = CCArray::createWithCapacity(7);
     char str[100] = {0};
     for (int i = 1; i <= 9; i++) {
@@ -100,16 +109,14 @@ void DarkKnight::runJumpAttackAnimation(CCPoint where) {
         animFrames->addObject(frame);
     }
     
-    CCSprite* sprite = CCSprite::createWithSpriteFrameName(str);
-    sprite->setPosition(where);
-    this->addChild(sprite);
-    
     CCAnimation* animation = CCAnimation::createWithSpriteFrames(animFrames, 0.1f);
     sprite->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
 }
 
-void DarkKnight::runGuardAnimation(CCPoint where)
+void DarkKnight::guard(CCPoint where)
 {
+    this->sprite->stopAllActions();
+    
     CCArray* animFrames = CCArray::createWithCapacity(7);
     char str[100] = {0};
     for (int i = 1; i <= 3; i++) {
@@ -118,10 +125,6 @@ void DarkKnight::runGuardAnimation(CCPoint where)
         animFrames->addObject(frame);
     }
     
-    CCSprite* sprite = CCSprite::createWithSpriteFrameName(str);
-    sprite->setPosition(where);
-    this->addChild(sprite);
-    
     CCAnimation* animation = CCAnimation::createWithSpriteFrames(animFrames, 0.1f);
-    sprite->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
+    this->sprite->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
 }
