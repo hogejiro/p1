@@ -10,7 +10,7 @@
 
 #include "cocos2d.h"
 #include "SimpleAudioEngine.h"
-#include "Action2.h"
+#include "DarkKnight.h"
 
 USING_NS_CC;
 using namespace CocosDenshion;
@@ -35,13 +35,30 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     // set FPS. the default value is 1.0/60 if you don't call this
     pDirector->setAnimationInterval(1.0 / 60);
-
-    // create a scene. it's an autorelease object
-    CCScene *pScene = Action2::scene();
+    
+    DarkKnight *dk1, *dk2, *dk3, *dk4;
+    dk1 = DarkKnight::create();
+    
+    CCLayer *objLayer = CCLayer::create();
+    objLayer->addChild(dk1);
+    
+    CCScene *scene = CCScene::create();
+    scene->addChild(objLayer);
 
     // run
-    pDirector->runWithScene(pScene);
-
+    pDirector->runWithScene(scene);
+    
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    dk1->setPosition(ccp(50, winSize.height/2));
+    dk1->run(ccp(100, 0));
+    /*
+    dk1->jump(ccp(60, 0));
+    dk1->turnLeft();
+    dk1->run(ccp(-100, 0));
+    dk1->jump(ccp(-60, 0));
+    dk1->turnRight();
+     */
+    
     return true;
 }
 
